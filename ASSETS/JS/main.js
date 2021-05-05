@@ -35,11 +35,13 @@ do {
     var userNumber = Number(prompt('Inserire un numero compreso tra 1 e ' + limit))
     
     if(lista_bombe.includes(userNumber)) {
-        alert('Sei saltato su una mina! Punti totalizzati: ' + punteggio)
+        alert('Sei saltato su una mina! Punti totalizzati: ' + punteggio);  
+        document.getElementById('bomb').innerHTML = userNumber;
+        document.getElementById('result').innerHTML = 'HAI PERSO!'; 
     } else if(list.includes(userNumber)) {
         alert('Numero già inserito');
     } else if (userNumber < 1 || userNumber > limit){
-        alert('Inserire un numero compreso tra 1 e ' + limit + '!')
+        alert('Inserire un numero compreso tra 1 e ' + limit + '!');
     } else if (isNaN(userNumber)){
         alert('Inserire un numero compreso tra 1 e ' + limit + '!');
     } else {
@@ -50,9 +52,15 @@ do {
 } while (list.length < possibilità && !lista_bombe.includes(userNumber));
 
 if(list.length == possibilità){
-    alert('Hai vinto')
+    alert('Hai vinto');
+    document.getElementById('result').innerHTML = 'HAI VINTO!'; 
+
 }
 
 console.log(list);
 console.log(punteggio);
 /* /Condizioni */
+
+document.getElementById('list').innerHTML = list;
+document.getElementById('points').innerHTML = punteggio;
+document.getElementById('difficulty').innerHTML = diff;
